@@ -4,6 +4,7 @@ import requests
 import csv
 from datetime import datetime
 import os
+import pytz
 
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
 CITY = "Seoul"
@@ -20,7 +21,7 @@ print(data)
 temp = data["main"]["temp"]
 humidity = data["main"]["humidity"]
 description = data["weather"][0]["description"]
-timezone = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+timezone = datetime.now(pytz.timezone('Asia/Seoul')).strftime("%Y-%m-%d %H:%M:%S")
 print(temp, humidity, description, timezone)
 
 # 위의 4개의 데이터를 가지는 csv파일 생성!!
